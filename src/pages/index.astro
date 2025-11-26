@@ -1,11 +1,54 @@
----
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>astro</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body class="bg-gray-50 text-slate-800 p-8">
+    <main class="mx-auto max-w-4xl">
+      <h1 class="text-3xl font-semibold mb-6">Users</h1>
 
-<Layout>
-	<Welcome />
-</Layout>
+      <div class="overflow-x-auto bg-white rounded-xl shadow p-4">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead>
+            <tr class="text-left bg-slate-100">
+              <th class="px-4 py-2 text-sm font-medium">#</th>
+              <th class="px-4 py-2 text-sm font-medium">Name</th>
+              <th class="px-4 py-2 text-sm font-medium">Email</th>
+              <th class="px-4 py-2 text-sm font-medium">Role</th>
+            </tr>
+          </thead>
+
+          <tbody class="divide-y divide-gray-100">
+
+            <tr class="bg-red-50 hover:bg-red-100">
+              <td class="px-4 py-3">1</td>
+              <td class="px-4 py-3">Alice</td>
+              <td class="px-4 py-3">alice@example.com</td>
+              <td class="px-4 py-3">Admin</td>
+            </tr>
+
+            <tr class="bg-blue-50 hover:bg-blue-100">
+              <td class="px-4 py-3">2</td>
+              <td class="px-4 py-3">Bob</td>
+              <td class="px-4 py-3">bob@example.com</td>
+              <td class="px-4 py-3">Editor</td>
+            </tr>
+
+            <tr class="bg-green-50 hover:bg-green-100">
+              <td class="px-4 py-3">3</td>
+              <td class="px-4 py-3">Carmen</td>
+              <td class="px-4 py-3">carmen@example.com</td>
+              <td class="px-4 py-3">Viewer</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

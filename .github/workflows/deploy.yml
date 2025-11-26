@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - test-sub-branch
   workflow_dispatch:  # Allows manual trigger
 
 jobs:

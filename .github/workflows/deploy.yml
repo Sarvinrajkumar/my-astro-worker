@@ -5,28 +5,38 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:   # Optional: allows manual trigger from Actions tab
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
+      # 3. Install dependencies
       - name: Install dependencies
         run: npm ci
 
+      # 4. Build Astro project
       - name: Build Astro project
         run: npm run build
 
+      # 5. Deploy to Cloudflare Worker
       - name: Deploy to Cloudflare Worker
         env:
-          CF_API_TOKEN: IK7svXB71MKB27_qhO87FDivKvgE-ZHesUbHFjv7
-          CF_ACCOUNT_ID: 5911281586c4d23e77beeba3d0fd84fbb9222
-        run: npx wrangler deploy --env production
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          echo "Checking Wrangler login..."
+          npx wrangler whoami
+          echo "Deploying to production..."
+          npx wrangler deploy --env production
